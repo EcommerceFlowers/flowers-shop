@@ -13,7 +13,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: 'NextJS 13',
+    title: 'Florist',
   };
 }
 
@@ -31,9 +31,15 @@ export default function RootLayout({
           <ProgressBarClient />
         </Suspense>
         <MainLayout>
+          {/**
+           * @todo Header
+           */}
           <TransitionLayout>
             <>{children}</>
           </TransitionLayout>
+          {/**
+           * @todo Footer
+           */}
         </MainLayout>
       </body>
     </html>
