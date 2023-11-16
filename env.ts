@@ -8,6 +8,8 @@ import { z } from 'zod';
 
 const SystemENVParser = z.object({
   IS_DEV: z.boolean(),
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string(),
+  NEXT_PUBLIC_SUPABASE_URL: z.string(),
 });
 
 const { publicRuntimeConfig } = getConfig();
