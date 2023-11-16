@@ -10,7 +10,13 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
-    const { data, error } = await supabase.from('flowers').insert([{ name: req.body.name }]);
+    const payload = {
+      description: req.body.description,
+      flower_name: req.body.flower_name,
+      price: req.body.price,
+      stock_quantity: req.body.stock_quantity,
+    };
+    const { data, error } = await supabase.from('flowers').insert([payload]);
     if (error) return res.status(500).json({ error: error.message });
     return res.status(200).json(data);
   }
