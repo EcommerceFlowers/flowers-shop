@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "prepare": "husky install",
@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.4.2",
+    "@heroicons/react": "^2.0.18",
     "@supabase/supabase-js": "^2.38.4",
     "classnames": "^2.3.2",
     "framer-motion": "^10.16.4",
