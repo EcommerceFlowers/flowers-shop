@@ -1,4 +1,4 @@
-type TGetLayout = (page: React.ReactNode) => React.ReactNode;
+type TAny = ReturnType<JSON.values>;
 
 interface ISvgComponentProps {
   width?: string | number;
@@ -7,12 +7,15 @@ interface ISvgComponentProps {
   viewBox?: string;
   opacity?: string | number;
   className?: string;
+  style?: React.CSSProperties;
 }
 
-type IComponent<T = {}> = React.FC<React.PropsWithChildren<T>>;
-interface IPageComponent<T = {}> extends IComponent<T> {
-  getLayout?: TGetLayout;
-}
-type ISvgComponent<T = {}> = IComponent<ISvgComponentProps & T>;
+interface IComponent<T = {}> extends React.FC<React.PropsWithChildren<T>> {}
+interface ISvgComponent<T = {}> extends IComponent<ISvgComponentProps & T> {}
+interface IFilterControllerComponent<T = {}> extends IComponent<TFilterControllerProps & T> {}
 
-type TAny = ReturnType<JSON.values>;
+// type TNextPage = import('next').NextPage<{ params: { lang: import('../i18n-config').Locale } }>;
+
+type TNextPage<T = unknown> = import('next').NextPage<{
+  params: { lang: import('../i18n-config').Locale } & T;
+}>;
