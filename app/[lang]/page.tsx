@@ -8,7 +8,7 @@ import styles from './styles.module.scss';
 export default function HomePage() {
   return (
     <div className={cx(styles.container, 'dark:text-white')}>
-      <h1 className="text-black text-2xl">Hello from home page</h1>
+      <h1 className="text-black text-2xl">Hello from home pagee</h1>
       <main className={styles.main}>
         {/**
          * thumbnail
