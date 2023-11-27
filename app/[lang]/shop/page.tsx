@@ -1,4 +1,5 @@
 //import { TNextPage } from 'next';
+// import Image from 'next/image';
 import React from 'react';
 // import Image from 'next/image';
 // import { MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/solid';
