@@ -13,6 +13,9 @@ module.exports = {
       colors: {
         gray1: '#F2F2F2',
         gray2: '#838383',
+        coral: '#FF8F52',
+        gainsboro: 'DCDCDC',
+        whitesmoke: 'F2F2F2',
       },
     },
   },
