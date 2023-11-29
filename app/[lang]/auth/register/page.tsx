@@ -9,15 +9,15 @@ export default function RegisterPage() {
           alt=""
           src="/images/register.jpg"
         />
-        <div className="absolute top-[0px] left-[0px] bg-white w-[488px] h-[673px]"/>
+        <div className="absolute top-[0px] left-[0px] bg-white w-[488px] h-[673px]" />
       </div>
       <div className="absolute top-[92px] left-[280px] text-4xl text-black font-normal">
         Register
       </div>
       <div className="absolute top-[105px] left-[540px] w-[131px] h-[22.4px] text-black">
-        <div className="absolute top-[0px] left-[21px] inline-block w-[110px] h-[22.4px] font-normal">
+        <button className="absolute top-[0px] left-[21px] inline-block w-[110px] h-[22.4px] font-normal bg-transparent border-none cursor-pointer">
           Back to home
-        </div>
+        </button>
         <img
           className="absolute top-[6px] left-[0px] w-[17px] h-4 overflow-hidden"
           alt=""
@@ -29,23 +29,37 @@ export default function RegisterPage() {
       </div>
       <div className="absolute top-[480px] left-[280px] text-[16px] leading-[25px] inline-block w-[391px] h-[45px]">
         <span className="opacity-50">{`with registering your accepting our `}</span>
-        <span className="text-coral">terms</span>
+        <button className="text-coral">terms</button>
         <span className="opacity-50">{` and `}</span>
-        <span className="text-coral">privacy policy</span>
+        <button className="text-coral">privacy policy</button>
       </div>
-      <div className="absolute top-[218px] left-[280px] rounded box-border w-[391px] h-[63px] border-[2px] border-solid border-gainsboro" />
-      <div className="absolute top-[239px] left-[309px] opacity-50">Email</div>
-      <div className="absolute top-[295px] left-[280px] rounded box-border w-[391px] h-[63px] border-[2px] border-solid border-gainsboro" />
-      <div className="absolute top-[316px] left-[309px] opacity-50">Username</div>
-      <div className="absolute top-[372px] left-[280px] rounded box-border w-[391px] h-[63px] border-[2px] border-solid border-gainsboro" />
-      <div className="absolute top-[393px] left-[309px] opacity-50">Password</div>
-      <div className="absolute top-[537px] left-[280px] rounded bg-coral w-[391px] h-[57px]" />
-      <div className="absolute top-[554px] left-[439px] text-xl text-white">
-        Register
+      <div className="absolute top-[218px] left-[280px] rounded box-border w-[391px] h-[63px] border-[2px] border-solid border-gainsboro">
+        <input
+          className="w-full h-full p-2 border-none outline-none"
+          type="text"
+          placeholder="Email"
+        />
       </div>
+      <div className="absolute top-[295px] left-[280px] rounded box-border w-[391px] h-[63px] border-[2px] border-solid border-gainsboro">
+        <input
+          className="w-full h-full p-2 border-none outline-none"
+          type="text"
+          placeholder="Username"
+        />
+      </div>
+      <div className="absolute top-[372px] left-[280px] rounded box-border w-[391px] h-[63px] border-[2px] border-solid border-gainsboro">
+        <input
+          className="w-full h-full p-2 border-none outline-none"
+          type="text"
+          placeholder="Password"
+        />
+      </div>
+      <button className="absolute top-[537px] left-[280px] rounded bg-coral w-[391px] h-[57px] flex items-center justify-center cursor-pointer">
+        <span className="text-xl text-white">Register</span>
+      </button>
       <div className="absolute top-[669px] left-[335px] text-xl">
         <span className="opacity-50">{`Already have an account? `}</span>
-        <span className="text-coral">Login</span>
+        <button className="text-coral bg-transparent border-none cursor-pointer">Login</button>
       </div>
     </div>
   );
