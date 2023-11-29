@@ -1,4 +1,4 @@
-import { cx } from '@utils/tools';
+// import { cx } from '@utils/tools';
 
 export default function RegisterPage() {
   return (
