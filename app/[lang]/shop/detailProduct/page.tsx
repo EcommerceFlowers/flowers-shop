@@ -23,7 +23,8 @@ const MOCK_DATA: TCartItem[] = [
     quantity: 1,
   },
   {
-    description: 'Sunflower',
+    description:
+      'Make every day brighter with our abundant bouquet of fresh sunflowers. These radiant, long-lasting blooms bring that just-picked-from-the-meadow feeling to birthdays, get well wishes, or any day you want to make someone you care about smile.',
     id: 3,
     image: '/images/mock/sunflower.png',
     name: 'Sunflower',
@@ -106,82 +107,96 @@ export default function ShopPage() {
         </div>
       </div>
 
-      <div className="body" style={{ padding: '50px 9.3%', width: '100%' }}>
+      <div className="body" style={{ height: '100%', padding: '50px 9.3%', width: '100%' }}>
         <div
-          className="filter flex justify-center h-[100px] bg-[#FFFFFF]"
-          style={{ width: '100%' }}>
-          <div className="iconFilter flex-1 pl-6 flex" style={{ margin: 'auto' }}>
-            <Image width={22} height={22} src="/images/filter-solid.png" alt="filter-icon"></Image>
-            <span className="pl-2">Filltering</span>
-          </div>
-          <div className="search flex-1" style={{ margin: 'auto' }}>
-            <input
-              className="w-full border-2 border-{#D9D9D9} h-[50px]"
-              type="text"
-              placeholder="Search ..."
-            />
-          </div>
-          <div className="sort flex-1 pr-6 flex justify-end" style={{ margin: 'auto' }}>
-            <Image
-              width={22}
-              height={22}
-              src="/images/arrow-down-short-wide-solid.png"
-              alt="arrow-down-short-wide-icon"></Image>
-            <span className="pl-2">Cheep</span>
-          </div>
-        </div>
-        <div
-          className="showProduct gap-4 grid grid-cols-4 pt-[50px] w-[100%]"
-          style={{ width: '100%' }}>
-          {items.map((item) => (
+          className="showDetail grid gap-8"
+          style={{
+            gridAutoRows: 'minmax(560px,auto)',
+            gridTemplateColumns: '1fr 1fr',
+            gridTemplateRows: 'minmax(430,auto)',
+            width: '100%',
+          }}>
+          <div className="content bg-[white] col-start-1 col-end-3 flex">
             <div
-              key={item.id}
-              className="product-box bg-[#FFFFFF] w-[100%] h-[456px] rounded-lg relative"
-              style={{ height: '480px', width: '100%' }}>
-              <div>
+              className="grid w-full"
+              style={{ gridTemplateColumns: '1fr 2fr', margin: 'auto 50px' }}>
+              <div className="image" style={{ gridAutoRows: 'minmax(560px,auto)' }}>
                 <Image
                   width={160}
                   height={160}
-                  src={item.image}
+                  src={items[2].image}
                   alt="arrow-down-short-wide-icon"
                   style={{
-                    height: '84%',
+                    height: '90%',
                     margin: 'auto',
-                    marginTop: '25px',
-                    maxHeight: '290px',
-                    width: '84%',
+                    width: '90%',
                   }}></Image>
               </div>
               <div
-                className="name-flower w-[320] font-['Roboto'] text-2xl mt-4 text-black font-medium"
-                style={{ margin: '10px auto', maxWidth: '320px' }}>
-                {item.name}
-              </div>
-              <div
-                className="flex absolute text-xl"
+                className="product-description grid"
                 style={{
-                  bottom: '18px',
-                  left: '8%',
+                  gridTemplateRows: '1fr 4fr 1fr 1fr',
+                  height: '90%',
                   margin: 'auto',
-                  maxWidth: '320px',
-                  right: '8%',
+                  width: '90%',
                 }}>
-                <div>{item.price}$</div>
-                <div className="add-to-cart flex absolute right-[0]">
+                <div className="product-name text-3xl font-medium">{items[2].name}</div>
+                <div className="product-description text-3xl text-zinc-500 font-normal font-['Roboto']">
+                  {items[2].description}
+                </div>
+                <div className="rating flex text-2xl">
                   <Image
-                    className="mr-2 mt-1"
-                    width={20}
-                    height={10}
-                    src="/images/Vector.png"
-                    alt="arrow-down-short-wide-icon"
-                    style={{ height: '18px' }}></Image>
-                  <span className="text-[#FF8F52]">Add to Cart</span>
+                    width={26}
+                    height={29}
+                    src="/images/star-solid.png"
+                    alt="cart-shopping-icon"
+                    style={{ maxHeight: '26px', maxWidth: '26px' }}></Image>
+                  <span>4.5/5</span>
+                </div>
+                <div className="button grid" style={{ gridTemplateColumns: '4fr 3fr 3fr' }}>
+                  <div className="price text-2xl">{items[2].price} $ / each</div>
+                  <div className="btn ">
+                    <button className="border-2 border-[#FF8F52] border-solid h-[75%] w-[75%] ml-2 text-xl rounded-md">
+                      Add to favorite
+                    </button>
+                  </div>
+                  <button className="btn border-2 border-[#FF8F52] border-solid h-[75%] w-[75%] flex text-xl bg-[#FF8F52] rounded-md">
+                    <div className="flex items-center" style={{ margin: 'auto' }}>
+                      <Image
+                        className="mr-2 mt-1"
+                        width={20}
+                        height={10}
+                        src="/images/cart-white.png"
+                        alt="arrow-down-short-wide-icon"
+                        style={{ height: '18px' }}></Image>
+                      <span className="text-[#FFFFFF]">Add to Cart</span>
+                    </div>
+                  </button>
                 </div>
               </div>
             </div>
-          ))}
+          </div>
+          <div className="comments bg-[white]">
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateRows: '1fr 8fr',
+                margin: '50px',
+                width: '90%',
+              }}>
+              <div className="title grid" style={{ gridTemplateColumns: '3fr 1fr' }}>
+                <div>Review</div>
+                <div>Add a review</div>
+              </div>
+              <div className="grid h-full" style={{ gridTemplateRows: '1fr 1fr 1fr' }}>
+                <div className="block1 h-full">a</div>
+                <div className="block2 h-full">b</div>
+                <div className="block3 h-full">c</div>
+              </div>
+            </div>
+          </div>
+          <div className="more-image bg-[white]"></div>
         </div>
-        <div className="detail"></div>
       </div>
     </div>
   );
