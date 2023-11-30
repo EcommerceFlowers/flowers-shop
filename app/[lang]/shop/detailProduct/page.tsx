@@ -181,21 +181,129 @@ export default function ShopPage() {
               style={{
                 display: 'grid',
                 gridTemplateRows: '1fr 8fr',
+                height: '90%',
                 margin: '50px',
                 width: '90%',
               }}>
-              <div className="title grid" style={{ gridTemplateColumns: '3fr 1fr' }}>
+              <div className="title grid text-2xl" style={{ gridTemplateColumns: '3fr 1fr' }}>
                 <div>Review</div>
                 <div>Add a review</div>
               </div>
               <div className="grid h-full" style={{ gridTemplateRows: '1fr 1fr 1fr' }}>
-                <div className="block1 h-full">a</div>
-                <div className="block2 h-full">b</div>
-                <div className="block3 h-full">c</div>
+                <div className="block1 h-full grid" style={{ gridTemplateColumns: '2fr 8fr' }}>
+                  <Image
+                    className="mr-2 mt-1"
+                    width={81}
+                    height={81}
+                    src="/images/avt.png"
+                    alt="avatar"></Image>
+                  <div
+                    className="grid text-2xl font-medium"
+                    style={{ gridTemplateRows: '1fr 2fr' }}>
+                    <div>Atena</div>
+                    <div className="text-zinc-500 font-normal font-['Roboto']">
+                      This flower is the best gift i have ever got
+                    </div>
+                  </div>
+                </div>
+                <div className="block1 h-full grid" style={{ gridTemplateColumns: '2fr 8fr' }}>
+                  <Image
+                    className="mr-2 mt-1"
+                    width={81}
+                    height={81}
+                    src="/images/avt.png"
+                    alt="avatar"></Image>
+                  <div
+                    className="grid text-2xl font-medium"
+                    style={{ gridTemplateRows: '1fr 2fr' }}>
+                    <div>Atena</div>
+                    <div className="text-zinc-500 font-normal font-['Roboto']">
+                      This flower is the best gift i have ever got
+                    </div>
+                  </div>
+                </div>
+                <div className="block1 h-full grid" style={{ gridTemplateColumns: '2fr 8fr' }}>
+                  <Image
+                    className="mr-2 mt-1"
+                    width={81}
+                    height={81}
+                    src="/images/avt.png"
+                    alt="avatar"></Image>
+                  <div
+                    className="grid text-2xl font-medium"
+                    style={{ gridTemplateRows: '1fr 2fr' }}>
+                    <div>Atena</div>
+                    <div className="text-zinc-500 font-normal font-['Roboto']">
+                      This flower is the best gift i have ever got
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div className="more-image bg-[white]"></div>
+          <div className="more-image bg-[white]">
+            <div
+              style={{
+                display: 'grid',
+                height: '90%',
+                margin: '30px auto',
+                width: '90%',
+              }}>
+              <div className="text-2xl mb-2.5">Maybe you like...</div>
+              <div
+                className="grid gap-4"
+                style={{ gridTemplateColumns: '1fr 1fr', gridTemplateRows: '1fr 1fr' }}>
+                <div className="image">
+                  <Image
+                    width={160}
+                    height={160}
+                    src={items[2].image}
+                    alt="arrow-down-short-wide-icon"
+                    style={{
+                      height: '100%',
+                      margin: 'auto',
+                      width: '100%',
+                    }}></Image>
+                </div>
+                <div className="image">
+                  <Image
+                    width={160}
+                    height={160}
+                    src={items[2].image}
+                    alt="arrow-down-short-wide-icon"
+                    style={{
+                      height: '100%',
+                      margin: 'auto',
+                      width: '100%',
+                    }}></Image>
+                </div>
+                <div className="image">
+                  <Image
+                    width={160}
+                    height={160}
+                    src={items[2].image}
+                    alt="arrow-down-short-wide-icon"
+                    style={{
+                      height: '100%',
+                      margin: 'auto',
+                      width: '100%',
+                    }}></Image>
+                </div>
+                <div className="image">
+                  <Image
+                    width={160}
+                    height={160}
+                    src={items[2].image}
+                    alt="arrow-down-short-wide-icon"
+                    style={{
+                      height: '100%',
+                      margin: 'auto',
+                      width: '100%',
+                    }}></Image>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
