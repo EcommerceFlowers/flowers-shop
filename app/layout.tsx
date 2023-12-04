@@ -1,8 +1,9 @@
 import '@styles/globals.scss';
 
+import { Footer } from '@components/Footer';
+import { Header } from '@components/Header';
 import ProgressBarClient from '@components/NavProgressBar';
 import { MainLayout } from '@layouts/MainLayout';
-import { TransitionLayout } from '@layouts/TransitionLayout';
 import { cx } from '@utils/tools';
 import { Metadata } from 'next';
 import { Suspense } from 'react';
@@ -31,15 +32,11 @@ export default function RootLayout({
           <ProgressBarClient />
         </Suspense>
         <MainLayout>
-          {/**
-           * @todo Header
-           */}
-          <TransitionLayout>
-            <>{children}</>
-          </TransitionLayout>
-          {/**
-           * @todo Footer
-           */}
+          <Header />
+          {/* <TransitionLayout> */}
+          <>{children}</>
+          {/* </TransitionLayout> */}
+          <Footer />
         </MainLayout>
       </body>
     </html>
