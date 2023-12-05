@@ -104,7 +104,11 @@ export const PageContent: IComponent<{
 
       <div className="gap-4 grid grid-cols-4 pt-[50px]">
         {data.map((item, index) => (
-          <FlowerCard key={index} flower={item} />
+          <FlowerCard
+            key={index}
+            flower={item}
+            onClick={() => router.push(`/shop/${item.flower_id}`)}
+          />
         ))}
       </div>
     </div>

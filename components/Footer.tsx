@@ -6,7 +6,7 @@ export const Footer: IComponent = () => {
       <div className="flex px-4 py-28 md:py-16 md:px-16 flex-col md:flex-row md:flex-wrap gap-4 lg:gap-2">
         <div className="flex flex-col gap-6 max-w-[400px] justify-between">
           <Link href={'/'} className="text-3xl font-medium">
-            <span className="text-primary">Flower</span>
+            <span className="text-primary">Florsit</span>
             <span className="text-white"> Shop</span>
           </Link>
           <p>

@@ -8,7 +8,7 @@ export const CommentSection: IComponent<{
       <div className="flex items-center justify-center px-20">
         <div className="flex-grow border-b-2 border-gray-300 h-2"></div>
         <h1 className="text-3xl font-medium text-black/60" style={{}}>
-          Comments
+          Bình luận
         </h1>
         <div className="flex-grow border-b-2 border-gray-300 h-2"></div>
       </div>

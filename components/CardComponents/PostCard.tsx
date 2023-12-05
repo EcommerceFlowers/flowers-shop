@@ -44,7 +44,7 @@ export const PostCard: IComponent<TPost> = ({
                 <EyeIcon className="w-6 h-6 text-gray2" /> {seen}
               </p>
             </div>
-            <span className="hover:text-primary text-xl">Read more</span>
+            <span className="hover:text-primary text-xl">Đọc thêm</span>
           </div>
         </div>
       )}>

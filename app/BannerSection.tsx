@@ -7,7 +7,7 @@ export const BannerSection: IComponent = () => {
     <section className=" flex items-center justify-between ">
       <div className="w-1/2">
         <div className="text-[#121212] text-6xl py-16">
-          Flowers
+          Florist
           <span role="img" aria-label="sunflower">
             🌻
           </span>

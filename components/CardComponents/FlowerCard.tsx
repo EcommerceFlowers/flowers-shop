@@ -21,7 +21,7 @@ export const FlowerCard: IComponent<{
           </div>
           <button className="w-fit py-2 rounded-md text-xl text-primary flex items-center gap-2 hover:opacity-80">
             <ShoppingCartIcon className="w-6 h-6" strokeWidth={2} />
-            Add to cart
+            Thêm vào giỏ
           </button>
         </div>
       )}>
