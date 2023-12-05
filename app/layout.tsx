@@ -17,7 +17,6 @@ export async function generateMetadata(): Promise<Metadata> {
     title: 'Florist',
   };
 }
-
 export default function RootLayout({ children }: { children: React.ReactNode; params: TAny }) {
   return (
     <html>

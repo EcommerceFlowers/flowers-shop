@@ -1,3 +1,4 @@
+import { AddToCardButton } from '@components/AddToCardButton';
 import { CommentCard } from '@components/CardComponents/CommentCard';
 import { ShoppingCartIcon } from '@heroicons/react/24/outline';
 import { formatVND } from '@utils/tools';
@@ -9,7 +10,7 @@ import Image from 'next/image';
 export const PageContent: IComponent<{
   item: IFlower;
 }> = ({ item }) => {
-  const { description, flower_name, flower_type, images, price } = item;
+  const { description, flower_id, flower_name, flower_type, images, price } = item;
   return (
     <div className="px-20 py-12 bg-gray-200 rounded ">
       <section className="flex gap-12 bg-white rounded-3xl p-12">
@@ -50,10 +51,12 @@ export const PageContent: IComponent<{
           </div>
           <div className="flex justify-between items-center mt-8">
             <div className="text-2xl text-black">Giá: {formatVND(price)}</div>
-            <button className="flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-lg hover:bg-opacity-80">
-              <ShoppingCartIcon className="w-6 h-6" strokeWidth={2} />
-              Thêm vào giỏ
-            </button>
+            <AddToCardButton flower_id={flower_id}>
+              <button className="flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-lg hover:bg-opacity-80">
+                <ShoppingCartIcon className="w-6 h-6" strokeWidth={2} />
+                Thêm vào giỏ hàng
+              </button>
+            </AddToCardButton>
           </div>
         </div>
       </section>

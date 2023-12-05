@@ -8,7 +8,8 @@ interface IFlower {
   images: string;
 }
 
-type TCartItem = IFlower & {
+type TCartItem = {
+  flower_id: number;
   quantity: number;
 };
 

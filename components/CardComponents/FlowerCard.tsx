@@ -1,13 +1,14 @@
 import { ShoppingCartIcon } from '@heroicons/react/24/outline';
 import { CardContainer } from '.';
 import { formatVND } from '@utils/tools';
+import { AddToCardButton } from '@components/AddToCardButton';
 
 export const FlowerCard: IComponent<{
   flower: IFlower;
   onClick?: () => void;
   className?: string;
 }> = ({ className, flower, onClick }) => {
-  const { flower_name, flower_type, images, price } = flower;
+  const { flower_id, flower_name, flower_type, images, price } = flower;
   return (
     <CardContainer
       onClick={onClick}
@@ -19,10 +20,12 @@ export const FlowerCard: IComponent<{
             <p className="text-lg text-gray2"> Phân loại: {flower_type}</p>
             <p className="text-lg text-gray2">Giá: {formatVND(price)}</p>
           </div>
-          <button className="w-fit py-2 rounded-md text-xl text-primary flex items-center gap-2 hover:opacity-80">
-            <ShoppingCartIcon className="w-6 h-6" strokeWidth={2} />
-            Thêm vào giỏ
-          </button>
+          <AddToCardButton flower_id={flower_id}>
+            <button className="w-fit py-2 rounded-md text-xl text-primary flex items-center gap-2 hover:opacity-80">
+              <ShoppingCartIcon className="w-6 h-6" strokeWidth={2} />
+              Thêm vào giỏ
+            </button>
+          </AddToCardButton>
         </div>
       )}>
       <div className="h-72 w-72 py-6">
