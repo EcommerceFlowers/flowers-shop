@@ -14,7 +14,7 @@ export const CardContainer: IComponent<{
       onClick={onClick}
       className={cx(
         styles.squareCard,
-        'aspect-[200/250] flex flex-col items-center py-4 cursor-pointer',
+        'w-full h-full flex flex-col items-center py-4 cursor-pointer justify-center',
         className
       )}
       style={customStyles ?? {}}>
@@ -31,10 +31,10 @@ export const RecCardComponent: IComponent<{
   renderFooter?: () => React.ReactNode;
   renderImage?: () => React.ReactNode;
   renderBottomRight?: () => React.ReactNode;
-}> = ({ className, renderBottomRight, renderFooter, renderHeader, renderImage }) => {
+}> = ({ children, className, renderBottomRight, renderFooter, renderHeader, renderImage }) => {
   return (
     <div className={cx(styles.recCard, className)}>
-      <div className="w-full aspect-[600/200] flex items-start justify-between p-4">
+      <div className="w-full h-full flex flex-col p-6">
         <div className="flex flex-col">
           {renderHeader?.()}
           {renderFooter?.()}
@@ -43,6 +43,7 @@ export const RecCardComponent: IComponent<{
           {renderImage?.()}
           {renderBottomRight?.()}
         </div>
+        {children}
       </div>
     </div>
   );

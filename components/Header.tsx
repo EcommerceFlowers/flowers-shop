@@ -50,7 +50,6 @@ const NavItem: IComponent<{
 
 export const Header: IComponent = () => {
   const pathName = usePathname();
-  console.log(pathName);
   return (
     <div className="bg-white h-24 flex items-center justify-between px-20">
       <Link href={'/'} className="text-3xl font-medium">

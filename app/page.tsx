@@ -1,14 +1,13 @@
-import { Header } from '@components/Header';
-import { Thumbnail } from '@components/Thumbnail';
+import { getListFlowersApi } from './api/flowers';
+import { PageContent } from './content';
 /**
  *
  * Home page
  */
-export default function HomePage() {
-  return (
-    <div className=" bg-gray-200 ">
-      <Header />
-      <Thumbnail />
-    </div>
-  );
-}
+
+const HomePage: IComponent = async () => {
+  const data: IFlower[] = await getListFlowersApi();
+  return <PageContent flowers={data} />;
+};
+
+export default HomePage;

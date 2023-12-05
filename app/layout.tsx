@@ -1,10 +1,10 @@
-import '@styles/globals.scss';
+import './global.scss';
 
 import { Footer } from '@components/Footer';
 import { Header } from '@components/Header';
 import ProgressBarClient from '@components/NavProgressBar';
 import { MainLayout } from '@layouts/MainLayout';
-import { cx } from '@utils/tools';
+import { TransitionLayout } from '@layouts/TransitionLayout';
 import { Metadata } from 'next';
 import { Suspense } from 'react';
 
@@ -18,24 +18,19 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function RootLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: TAny;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode; params: TAny }) {
   return (
-    <html lang={params.lang} className="scroll-smooth">
-      <body className={cx('scroll-smooth w-screen overflow-x-hidden font-alex')}>
+    <html>
+      <link rel="icon" href="/images/favicon.ico" sizes="any" />
+      <body>
         <Suspense>
           <ProgressBarClient />
         </Suspense>
         <MainLayout>
           <Header />
-          {/* <TransitionLayout> */}
-          <>{children}</>
-          {/* </TransitionLayout> */}
+          <TransitionLayout>
+            <>{children}</>
+          </TransitionLayout>
           <Footer />
         </MainLayout>
       </body>

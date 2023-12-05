@@ -1,14 +1,18 @@
 /** @type {import('next').NextConfig} */
-const intercept = require('intercept-stdout');
-
 const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        hostname: '*',
+        protocol: 'https',
+      },
+      {
+        hostname: 'picsum.photos',
+        protocol: 'https',
+      },
+    ],
+  },
   output: 'standalone',
-  reactStrictMode: true,
 };
-
-/**
- * Hide warning of RecoilJS when hot reload
- */
-intercept((text) => (text.includes('Duplicate atom key') ? '' : text));
 
 module.exports = nextConfig;

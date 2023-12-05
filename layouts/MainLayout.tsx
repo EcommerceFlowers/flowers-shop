@@ -15,7 +15,6 @@ export const MainLayout: IComponent = ({ children }) => {
         },
         'w-full h-full'
       )}>
-      {/* Smooth out darkmode transition with transition-all */}
       <div className="w-full h-full bg-white dark:bg-black transition-all">{children}</div>
     </div>
   );

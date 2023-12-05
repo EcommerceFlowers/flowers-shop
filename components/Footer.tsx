@@ -7,7 +7,7 @@ export const Footer: IComponent = () => {
         <div className="flex flex-col gap-6 max-w-[400px] justify-between">
           <Link href={'/'} className="text-3xl font-medium">
             <span className="text-primary">Flower</span>
-            <span className="text-black"> Shop</span>
+            <span className="text-white"> Shop</span>
           </Link>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -15,7 +15,7 @@ export const Footer: IComponent = () => {
           </p>
         </div>
         <div className="flex-auto flex lg:justify-center justify-start items-center">
-          <div className="w-max flex flex-wrap gap-6 justify-between">
+          <div className="w-max flex flex-wrap gap-24 justify-between">
             <div className="flex flex-col gap-2 text-base">
               <span className="font-bold uppercase text-xl">Giới thiệu</span>
               <Link href={'#'}>Về chúng tôi</Link>
@@ -46,7 +46,9 @@ export const Footer: IComponent = () => {
         </div>
       </div>
       <div className="w-full px-4 md:px-16 py-8 border-t border-[#E0E2E650] pb-28 md:pb-8">
-        <span className="text-base text-[#4492AA]">© 2023 Khambenh.vn | All rights raserved</span>
+        <span className="text-base text-[#4492AA]">
+          © 2023 FlowerShop.vn | All rights raserved
+        </span>
       </div>
     </div>
   );

@@ -1,10 +1,10 @@
 CREATE TABLE Flowers (
     flower_id SERIAL PRIMARY KEY,
     flower_name VARCHAR(255) NOT NULL,
+    flower_type VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
-    images VARCHAR(255) NOT NULL,
-    stock_quantity INT
+    images VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE Customers (
@@ -17,7 +17,7 @@ CREATE TABLE Customers (
 );
 
 CREATE TABLE Orders (
-    id SERIAL PRIMARY KEY,
+    order_id SERIAL PRIMARY KEY,
     customer_id INT NOT NULL,
     order_date DATE NOT NULL,
     total_price DECIMAL(10, 2) NOT NULL,

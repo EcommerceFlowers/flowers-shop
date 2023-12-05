@@ -1,12 +1,31 @@
 type TDarkModeStatus = 'dark' | 'light' | 'auto';
 interface IFlower {
-  id: number;
-  name: string;
+  flower_id: number;
+  flower_name: string;
+  flower_type: string;
   description: string;
   price: number;
-  image: string;
+  images: string;
 }
 
 type TCartItem = IFlower & {
   quantity: number;
+};
+
+type TComment = {
+  name: string;
+  content: string;
+  avatar: string;
+  rating: number;
+};
+
+type TPost = {
+  name: string;
+  avatar: string;
+  title: string;
+  description: string;
+  date: string;
+  image: string;
+  likes: number;
+  seen: number;
 };
