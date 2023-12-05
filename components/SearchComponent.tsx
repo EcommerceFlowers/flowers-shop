@@ -7,7 +7,6 @@ export const SearchComponent: IComponent<{
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onClick: (e: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement>) => void;
-
   className?: string;
 }> = ({ className, onChange, onClick, placeholder, value }) => (
   <div

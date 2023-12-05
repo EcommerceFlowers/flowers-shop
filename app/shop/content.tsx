@@ -1,15 +1,61 @@
 'use client';
 
-import Image from 'next/image';
-import { FunnelIcon } from '@heroicons/react/24/outline';
-import { SearchComponent } from '@components/SearchComponent';
-import { useState } from 'react';
 import { FlowerCard } from '@components/CardComponents/FlowerCard';
+import { SearchComponent } from '@components/SearchComponent';
+import { ChevronDoubleDownIcon, FunnelIcon } from '@heroicons/react/24/outline';
+import { useActionDebounce } from '@hooks/useAction';
+import { cx } from '@utils/tools';
+import { useRouter } from 'next/navigation';
+import { useCallback, useState } from 'react';
+
+type TSort = 'none' | 'asc' | 'desc';
 
 export const PageContent: IComponent<{
-  items: any[];
+  items: IFlower[];
 }> = ({ items }) => {
+  const router = useRouter();
   const [search, setSearch] = useState('');
+  const [data, setData] = useState(items);
+  const [sort, setSort] = useState<TSort>('none');
+  const debounce = useActionDebounce(500, true);
+
+  const filter = (value: string) => {
+    if (value === '') {
+      return items;
+    }
+    const filtered = items.filter((item) => item.flower_name.includes(value));
+    return filtered;
+  };
+
+  const handleSearch = useCallback(() => {
+    debounce(async () => {
+      await router.push(`/shop?search=${search}`);
+      const data = filter(search);
+      setData(data);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [search]);
+
+  const handleSort = useCallback(
+    async (sort: TSort) => {
+      if (sort === 'none') {
+        const data = filter(search);
+        setData(data);
+        return;
+      }
+      const data = filter(search);
+      const sorted = data.sort((a, b) => {
+        if (sort === 'asc') {
+          return a.price - b.price;
+        } else {
+          return b.price - a.price;
+        }
+      });
+      setData(sorted);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    },
+    [search]
+  );
 
   return (
     <div className="min-h-screen w-full bg-[#F2F2F2] px-40 py-12">
@@ -22,21 +68,43 @@ export const PageContent: IComponent<{
           placeholder="Search flowers..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          onClick={() => console.log({ search })}
+          onClick={handleSearch}
         />
-        <div className="sort flex-1 pr-6 flex justify-end">
-          <Image
-            width={22}
-            height={22}
-            src="/images/arrow-down-short-wide-solid.png"
-            alt="arrow-down-short-wide-icon"></Image>
-          <span className="pl-2">Cheep</span>
+        <div
+          className="sort flex-1 pr-6 flex justify-end cursor-pointer text-gray2 group"
+          onClick={() => {
+            if (sort === 'none') {
+              setSort('asc');
+              handleSort('asc');
+            } else if (sort === 'asc') {
+              setSort('desc');
+              handleSort('desc');
+            } else {
+              setSort('none');
+              handleSort('none');
+            }
+          }}>
+          <span className="pl-2 mr-2 text-black ">
+            {sort === 'asc'
+              ? 'Price: Low to High'
+              : sort === 'desc'
+                ? 'Price: High to Low'
+                : 'Sort'}
+          </span>
+          <ChevronDoubleDownIcon
+            className={cx('w-6 h-6 transform group-hover:text-primary', {
+              'rotate-0': sort === 'asc',
+              'rotate-180': sort === 'desc',
+              'text-primary': sort !== 'none',
+            })}
+            strokeWidth={2}
+          />
         </div>
       </section>
 
       <div className="gap-4 grid grid-cols-4 pt-[50px]">
-        {items.map((item, index) => (
-          <FlowerCard key={index} flower={item} className="hover:opacity-90 hover:bg-white/10" />
+        {data.map((item, index) => (
+          <FlowerCard key={index} flower={item} />
         ))}
       </div>
     </div>

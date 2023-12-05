@@ -7,7 +7,7 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   darkMode: 'class',
-  plugins: [],
+  plugins: [require('@tailwindcss/line-clamp')],
   theme: {
     extend: {
       colors: {

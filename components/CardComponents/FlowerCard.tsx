@@ -14,10 +14,12 @@ export const FlowerCard: IComponent<{
       className={className}
       renderFooter={() => (
         <div className="grow w-full px-8 flex flex-col py-4 justify-between">
-          <p className="text-2xl font-semibold h-24">{flower_name}</p>
-          <p className="text-lg text-gray2 mt-1"> Phân loại: {flower_type}</p>
-          <p className="text-lg text-gray2">Giá: {formatVND(price)}</p>
-          <button className="text-xl text-primary flex items-center gap-2 hover:opacity-80">
+          <p className="text-[22px] font-semibold h-24 line-clamp-3">{flower_name}</p>
+          <div className="py-2 flex flex-col gap-2 mt-2">
+            <p className="text-lg text-gray2"> Phân loại: {flower_type}</p>
+            <p className="text-lg text-gray2">Giá: {formatVND(price)}</p>
+          </div>
+          <button className="w-fit py-2 rounded-md text-xl text-primary flex items-center gap-2 hover:opacity-80">
             <ShoppingCartIcon className="w-6 h-6" strokeWidth={2} />
             Add to cart
           </button>
