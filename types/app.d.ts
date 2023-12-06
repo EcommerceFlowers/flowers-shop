@@ -21,6 +21,7 @@ type TComment = {
 };
 
 type TPost = {
+  id?: string;
   name: string;
   avatar: string;
   title: string;
@@ -29,4 +30,5 @@ type TPost = {
   image: string;
   likes: number;
   seen: number;
+  href?: string;
 };

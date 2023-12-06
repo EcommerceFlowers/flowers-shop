@@ -1,21 +1,27 @@
+'use client';
+
 import { CardContainer } from '.';
 import Image from 'next/image';
 import { HeartIcon } from '@heroicons/react/24/solid';
 import { EyeIcon } from '@heroicons/react/24/outline';
+import { useRouter } from 'next/navigation';
 
 export const PostCard: IComponent<TPost> = ({
   avatar,
   date,
   description,
+  href,
   image,
   likes,
   name,
   seen,
   title,
 }) => {
+  const router = useRouter();
   return (
     <CardContainer
       className="bg-white/90 w-full h-fit !px-0"
+      onClick={() => href && router.push(href)}
       renderHeader={() => (
         <div className="w-full flex gap-4 items-center px-6">
           <div>
@@ -34,7 +40,7 @@ export const PostCard: IComponent<TPost> = ({
       renderFooter={() => (
         <div className="flex flex-col gap-4 px-6 mt-4 text-black py-4">
           <h3 className="text-2xl font-medium">{title}</h3>
-          <p className="text-lg text-gray2">{description}</p>
+          <p className="text-lg text-gray2 line-clamp-3">{description}</p>
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-8">
               <p className="flex gap-2 items-center">

@@ -16,7 +16,7 @@ export const supabase = createClient(supabaseUrl, supabaseKey);
 
 export default function RootLayout({ children }: { children: React.ReactNode; params: TAny }) {
   return (
-    <html>
+    <html lang="vn">
       <link rel="icon" href="/images/favicon.ico" sizes="any" />
       <body>
         <Suspense>

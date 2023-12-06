@@ -1,10 +1,10 @@
 'use client';
 
-import { ShoppingCartIcon } from '@heroicons/react/24/outline';
 import { cx } from '@utils/tools';
 import { capitalize } from 'lodash';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { CartDialog } from './CartDialog';
 
 type TRouter = {
   name: string;
@@ -73,6 +73,7 @@ export const Header: IComponent = () => {
       isActiveRouter = capitalize(p?.[1]);
     }
   }
+
   return (
     <div className="bg-white h-24 flex items-center justify-between px-20">
       <Link href={'/'} className="text-3xl font-medium">
@@ -87,10 +88,7 @@ export const Header: IComponent = () => {
           ))}
         </div>
       </div>
-
-      <div>
-        <ShoppingCartIcon className="w-8 h-8 text-primary" />
-      </div>
+      <CartDialog />
     </div>
   );
 };

@@ -10,15 +10,15 @@ export const Footer: IComponent = () => {
             <span className="text-white"> Shop</span>
           </Link>
           <div className="w-full flex flex-col gap-4 font-medium pr-12">
-            <p>Cửa hàng hoa giấy uy tín, chất lượng, giá rẻ tại Hồ Chí Minh.</p>
-            <p>
+            <span>Cửa hàng hoa giấy uy tín, chất lượng, giá rẻ tại Hồ Chí Minh.</span>
+            <span>
               Chuyên cung cấp hoa giấy, hoa hồng giấy, hoa hồng sáp, hoa sáp thơm, hoa hồng sáp nhập
               khẩu từ Hàn Quốc, Nhật Bản, Mỹ, Đài Loan, Thái Lan.
-            </p>
-            <p>
+            </span>
+            <span>
               Chúng tôi cam kết mang đến cho khách hàng những sản phẩm hoa giấy, hoa hồng giấy, hoa
               sáp phù hợp nhất với nhu cầu của bạn.
-            </p>
+            </span>
           </div>
         </div>
         <div className="flex-auto flex lg:justify-center justify-start items-center">

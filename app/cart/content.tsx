@@ -116,7 +116,7 @@ export const PageContent: IComponent = () => {
     <main className="dark:text-white bg-gray1 min-h-screen px-32 py-16">
       <div className="flex flex-wrap">
         <section className="w-3/5 p-4  h-full">
-          <div className="bg-white rounded px-12 py-12 pb-20">
+          <div className="bg-white rounded pr-28 py-12 pb-20">
             <h2 className="text-3xl text-right font-medium">
               Giỏ hàng của bạn ({data.length} sản phẩm)
             </h2>
