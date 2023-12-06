@@ -28,7 +28,11 @@ export const SelectionComponent: IComponent<{
           onChange={onClick}
           placeholder={placeholder}
           className={cx(
-            'grow appearance-none outline-none cursor-pointer border-none !ring-0 text-black text-b1 p-0 bg-transparent text-right pr-8 font-bold'
+            'grow appearance-none outline-none cursor-pointer border-none !ring-0 text-black text-b1 p-0 bg-transparent text-right pr-8',
+            {
+              'font-semibold': value && value !== 'auto',
+              'text-gray2': !value || value === 'auto',
+            }
           )}>
           {list.length > 0 && (
             <option className="font-medium text-black text-b1" value="auto">

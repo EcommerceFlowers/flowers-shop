@@ -12,7 +12,7 @@ export const PageContent: IComponent<{
   return (
     <main className="bg-gray-200 h-full px-20">
       <BannerSection />
-      <BestSellerSection items={flowers.slice(0, 4)} />
+      <BestSellerSection items={flowers} />
       <CommentSection comments={MOCK_COMMENTS} />
       <PostSection posts={MOCK_POSTS} />
     </main>

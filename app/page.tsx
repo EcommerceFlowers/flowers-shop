@@ -1,16 +1,21 @@
-import { ProjectENV } from '@env';
+import { getFlowersWithLimit } from '@utils/flowers';
 import { PageContent } from './content';
+import { supabase } from './layout';
+import { Metadata } from 'next';
 /**
  *
  * Home page
  */
 
+export const metadata: Metadata = {
+  title: 'Florist',
+};
+
 const HomePage: TNextPage = async () => {
-  const data: IFlower[] = await fetch(`${ProjectENV.NEXT_PUBLIC_APP_ENDPOINT}/api/flowers`)
-    .then((res) => res.json())
-    .catch((err) => {
-      console.error(err);
-    });
+  const { data, error } = await getFlowersWithLimit(4, supabase);
+  if (error) {
+    return <div>Something went wrong</div>;
+  }
   return <PageContent flowers={data} />;
 };
 

@@ -19,13 +19,16 @@ export const PageContent: IComponent<{
   const [sort, setSort] = useState<TSort>('none');
   const debounce = useActionDebounce(500, true);
 
-  const filter = (value: string) => {
-    if (value === '') {
-      return items;
-    }
-    const filtered = items.filter((item) => item.flower_name.includes(value));
-    return filtered;
-  };
+  const filter = useCallback(
+    (value: string) => {
+      if (value === '') {
+        return items;
+      }
+      const filtered = items.filter((item) => item.flower_name.includes(value));
+      return filtered;
+    },
+    [items]
+  );
 
   const handleSearch = useCallback(() => {
     debounce(async () => {
@@ -33,8 +36,7 @@ export const PageContent: IComponent<{
       const data = filter(search);
       setData(data);
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [search, debounce, filter]);
 
   const handleSort = useCallback(
     async (sort: TSort) => {
@@ -53,8 +55,7 @@ export const PageContent: IComponent<{
       });
       setData(sorted);
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [filter, search, setData]
   );
 
   return (

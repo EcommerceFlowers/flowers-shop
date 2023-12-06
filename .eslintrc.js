@@ -32,6 +32,7 @@ module.exports = {
   plugins: ['react', '@typescript-eslint', 'import', 'perfectionist', 'prettier'],
   root: true,
   rules: {
+    '@next/next/no-page-custom-font': 'off',
     '@typescript-eslint/no-explicit-any': 'warn',
     'arrow-body-style': 'off',
     'import/first': 'error',
@@ -46,6 +47,7 @@ module.exports = {
     ],
     'prefer-arrow-callback': 'off',
     'prettier/prettier': 'error',
+    'react/no-unescaped-entities': 'off',
     'react/react-in-jsx-scope': 'off',
   },
 };

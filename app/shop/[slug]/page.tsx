@@ -1,17 +1,18 @@
-import { ProjectENV } from '@env';
+import { supabase } from 'app/layout';
 import { PageContent } from './content';
+import { getFlowerById } from '@utils/flowers';
 
 const ProductDetailPage: TNextPage<{
   slug: string;
 }> = async ({ params: { slug } }) => {
-  const data = await fetch(`${ProjectENV.NEXT_PUBLIC_APP_ENDPOINT}/api/flowers?id=${slug}`)
-    .then((res) => res.json())
-    .catch((err) => {
-      console.error(err);
-    });
+  const { data, error } = await getFlowerById(slug, supabase);
+  if (error) {
+    return <div>Something went wrong</div>;
+  }
+
   return (
     <div>
-      <PageContent item={data[0]} />
+      <PageContent item={data?.[0]} />
     </div>
   );
 };

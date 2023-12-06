@@ -1,3 +1,5 @@
+'use client';
+
 import { useCartStore } from '@states/cart';
 import { ToastTemplate } from '@utils/toasts';
 import { useCallback } from 'react';
