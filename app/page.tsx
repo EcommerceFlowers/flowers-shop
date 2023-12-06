@@ -1,4 +1,4 @@
-import { getListFlowersApi } from './api/flowers';
+import { ProjectENV } from '@env';
 import { PageContent } from './content';
 /**
  *
@@ -6,7 +6,11 @@ import { PageContent } from './content';
  */
 
 const HomePage: TNextPage = async () => {
-  const data: IFlower[] = await getListFlowersApi();
+  const data: IFlower[] = await fetch(`${ProjectENV.NEXT_PUBLIC_APP_ENDPOINT}/api/flowers`)
+    .then((res) => res.json())
+    .catch((err) => {
+      console.error(err);
+    });
   return <PageContent flowers={data} />;
 };
 
