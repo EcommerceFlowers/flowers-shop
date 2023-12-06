@@ -7,38 +7,45 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 type TRouter = {
-  url: string;
   name: string;
+  url: string;
+  vn?: string;
 };
 
 export const ROUTER: TRouter[] = [
   {
     name: 'Home',
     url: '/',
+    vn: 'Trang chủ',
   },
   {
     name: 'Shop',
     url: '/shop',
+    vn: 'Cửa hàng',
   },
   {
     name: 'Blog',
     url: '/blog',
+    vn: 'Blog',
   },
   {
     name: 'About',
     url: '/about',
+    vn: 'Giới thiệu',
   },
   {
     name: 'Cart',
     url: '/cart',
+    vn: 'Giỏ hàng',
   },
 ];
 
 const NavItem: IComponent<{
   url: string;
   name: string;
+  vn?: string;
   isActive?: boolean;
-}> = ({ isActive, name, url }) => {
+}> = ({ isActive, name, url, vn }) => {
   return (
     <div>
       <Link href={url}>
@@ -46,7 +53,7 @@ const NavItem: IComponent<{
           className={cx('text-black', {
             'text-primary': isActive,
           })}>
-          {name}
+          {vn ?? name}
         </span>
       </Link>
     </div>

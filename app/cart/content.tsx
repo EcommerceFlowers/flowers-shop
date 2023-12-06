@@ -6,6 +6,7 @@ import { useCartStore } from '@states/cart';
 import { formatVND } from '@utils/tools';
 import { useEffect, useMemo, useState } from 'react';
 import { CartItem } from './CartItem';
+import { SelectionComponent, TSelection } from '@components/SelectionComponent';
 
 const DEFAULT_SHIPPING_FEE = 50000;
 
@@ -13,12 +14,25 @@ export type IFlowerWithQuantity = IFlower & {
   quantity: number;
 };
 
+const PaymentMethods: TSelection[] = [
+  {
+    name: 'Tiền mặt',
+    value: 'cash',
+  },
+  {
+    name: 'Paypal',
+    value: 'paypal',
+  },
+];
+
 export const PageContent: IComponent = () => {
   const { cart } = useCartStore();
   const [data, setData] = useState<IFlowerWithQuantity[]>([]);
   const [loading, setLoading] = useState(false);
+  const [methodPayment, setMethodPayment] = useState<string>('');
   useEffect(() => {
     const fetchData = async () => {
+      if (cart.length === 0) return;
       const res = await fetch(
         `${ProjectENV.NEXT_PUBLIC_APP_ENDPOINT}/api/flowers?ids=${cart
           .map((item) => item.flower_id)
@@ -27,6 +41,7 @@ export const PageContent: IComponent = () => {
       const data = await res.json();
       const newData = data.map((item: IFlower) => {
         const index = cart.findIndex((cartItem) => cartItem.flower_id === item.flower_id);
+        if (index === -1) return [];
         return {
           ...item,
           quantity: cart[index].quantity,
@@ -46,7 +61,7 @@ export const PageContent: IComponent = () => {
   return (
     <main className="dark:text-white bg-gray1 min-h-screen px-32 py-16">
       <div className="flex flex-wrap">
-        <section className="w-2/3 p-4  h-full">
+        <section className="w-3/5 p-4  h-full">
           <div className="bg-white rounded px-12 py-12 pb-20">
             <h2 className="text-3xl text-right font-medium">
               Giỏ hàng của bạn ({data.length} sản phẩm)
@@ -63,7 +78,7 @@ export const PageContent: IComponent = () => {
             </div>
           </div>
         </section>
-        <section className="w-1/3 p-4  h-full">
+        <section className="w-2/5 p-4  h-full">
           <div className="flex flex-col bg-white rounded px-10 py-8 text-xl gap-6">
             <p className="flex justify-between">
               <span>Tổng tiền hàng ({data.length} sản phẩm)</span>
@@ -71,20 +86,22 @@ export const PageContent: IComponent = () => {
             </p>
             <p className="flex justify-between">
               <span>Phí vận chuyển</span>
-              <span>{formatVND(DEFAULT_SHIPPING_FEE)}</span>
+              <span>{formatVND(cart.length > 0 ? DEFAULT_SHIPPING_FEE : 0)}</span>
             </p>
             <p className="flex justify-between">
               <span>Tổng chi phí</span>
-              <span>{formatVND(subTotal + DEFAULT_SHIPPING_FEE)}</span>
+              <span>{cart.length > 0 ? formatVND(subTotal + DEFAULT_SHIPPING_FEE) : 0}</span>
             </p>
-            <p className="flex justify-between">
-              <span>Phương thức thanh toán</span>
-              <select value={0}>
-                <option value={0}>Lựa chọn</option>
-                <option value={1}>Tiền mặt</option>
-                <option value={2}>Paypal</option>
-              </select>
-            </p>
+
+            <SelectionComponent
+              title="Phương thức thanh toán"
+              placeholder="Chọn phương thức thanh toán"
+              value={methodPayment}
+              onClick={(e) => {
+                setMethodPayment(e.target.value);
+              }}
+              list={PaymentMethods ?? []}
+            />
             <button className="mt-2 bg-orange-400 h-12 text-white rounded">Thanh toán</button>
           </div>
         </section>

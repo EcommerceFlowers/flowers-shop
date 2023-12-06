@@ -34,7 +34,7 @@ export const PageContent: IComponent<{
       setData(data);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [search]);
+  }, []);
 
   const handleSort = useCallback(
     async (sort: TSort) => {
@@ -52,9 +52,9 @@ export const PageContent: IComponent<{
         }
       });
       setData(sorted);
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     },
-    [search]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
   );
 
   return (
