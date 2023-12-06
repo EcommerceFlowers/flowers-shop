@@ -14,7 +14,6 @@ export const AddToCardButton: IComponent<{
     if (index === -1) {
       const newCart = [...cart, { flower_id, quantity: 1 }];
       setCart(newCart);
-      console.log(newCart);
       ToastTemplate.success('Đã thêm vào giỏ hàng');
     } else {
       ToastTemplate.warn('Sản phẩm đã có trong giỏ hàng');

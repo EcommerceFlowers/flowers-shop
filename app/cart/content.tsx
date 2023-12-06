@@ -11,6 +11,7 @@ import { formatVND } from '@utils/tools';
 import { supabase } from 'app/layout';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { CartItem } from './CartItem';
+import { useRouter } from 'next/navigation';
 
 const DEFAULT_SHIPPING_FEE = 50000;
 
@@ -30,7 +31,7 @@ const PaymentMethods: TSelection[] = [
 ];
 
 export const PageContent: IComponent = () => {
-  const { cart } = useCartStore();
+  const { cart, setCart } = useCartStore();
   const [data, setData] = useState<IFlowerWithQuantity[]>([]);
   const [loading, setLoading] = useState(false);
   const [methodPayment, setMethodPayment] = useState<string>('');
@@ -76,6 +77,8 @@ export const PageContent: IComponent = () => {
     setShippingFee(DEFAULT_SHIPPING_FEE);
   }, [subTotal]);
 
+  const router = useRouter();
+
   const handleCheckout = useCallback(async () => {
     setLoadingPayment(true);
     if (methodPayment === '') {
@@ -98,11 +101,16 @@ export const PageContent: IComponent = () => {
         },
         method: 'POST',
       };
-      await fetch(`${ProjectENV.NEXT_PUBLIC_APP_ENDPOINT}/api/payments`, options);
+      const { data } = await fetch(
+        `${ProjectENV.NEXT_PUBLIC_APP_ENDPOINT}/api/payments`,
+        options
+      ).then((res) => res.json());
+      router.push(data);
+      setCart([]);
       setLoadingPayment(false);
       return;
     }
-  }, [methodPayment, data, subTotal, shippingFee, setLoadingPayment]);
+  }, [methodPayment, data, subTotal, shippingFee, setCart, setLoadingPayment]);
 
   return (
     <main className="dark:text-white bg-gray1 min-h-screen px-32 py-16">
