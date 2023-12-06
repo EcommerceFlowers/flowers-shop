@@ -1,12 +1,15 @@
 'use client';
 
+import { LoadableButton } from '@components/LoadableButton';
 import { SelectionComponent, TSelection } from '@components/SelectionComponent';
+import { ProjectENV } from '@env';
 import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import { useCartStore } from '@states/cart';
 import { getListFlowerByIds } from '@utils/flowers';
+import { ToastTemplate } from '@utils/toasts';
 import { formatVND } from '@utils/tools';
 import { supabase } from 'app/layout';
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { CartItem } from './CartItem';
 
 const DEFAULT_SHIPPING_FEE = 50000;
@@ -17,8 +20,8 @@ export type IFlowerWithQuantity = IFlower & {
 
 const PaymentMethods: TSelection[] = [
   {
-    name: '💸 Tiền mặt',
-    value: 'cash',
+    name: '🏦 Chuyển khoản ngân hàng',
+    value: 'banking',
   },
   {
     name: '💳 Paypal',
@@ -32,6 +35,7 @@ export const PageContent: IComponent = () => {
   const [loading, setLoading] = useState(false);
   const [methodPayment, setMethodPayment] = useState<string>('');
   const [shippingFee, setShippingFee] = useState<number>(0);
+  const [loadingPayment, setLoadingPayment] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       if (cart.length === 0) return;
@@ -71,6 +75,34 @@ export const PageContent: IComponent = () => {
     }
     setShippingFee(DEFAULT_SHIPPING_FEE);
   }, [subTotal]);
+
+  const handleCheckout = useCallback(async () => {
+    setLoadingPayment(true);
+    if (methodPayment === '') {
+      ToastTemplate.fail('Vui lòng chọn phương thức thanh toán');
+      setLoadingPayment(false);
+      return;
+    } else if (data.length === 0 || subTotal === 0) {
+      ToastTemplate.fail('Giỏ hàng của bạn đang trống');
+      setLoadingPayment(false);
+      return;
+    } else if (methodPayment === 'banking') {
+      const options = {
+        body: JSON.stringify({
+          amount: subTotal + shippingFee,
+          method: 'banking',
+        }),
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+        },
+        method: 'POST',
+      };
+      await fetch(`${ProjectENV.NEXT_PUBLIC_APP_ENDPOINT}/api/payments`, options);
+      setLoadingPayment(false);
+      return;
+    }
+  }, [methodPayment, data, subTotal, shippingFee, setLoadingPayment]);
 
   return (
     <main className="dark:text-white bg-gray1 min-h-screen px-32 py-16">
@@ -116,9 +148,12 @@ export const PageContent: IComponent = () => {
               }}
               list={PaymentMethods ?? []}
             />
-            <button className="w-1/2 mt-4 mx-auto bg-orange-400 h-12 text-white rounded hover:opacity-80">
+            <LoadableButton
+              className="w-1/3 mt-4 mx-auto bg-orange-400 h-12 text-white rounded-md hover:opacity-80"
+              onClick={handleCheckout}
+              loading={loadingPayment}>
               Thanh toán
-            </button>
+            </LoadableButton>
           </div>
         </section>
       </div>

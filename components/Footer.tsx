@@ -4,15 +4,22 @@ export const Footer: IComponent = () => {
   return (
     <div className="w-full bg-[#454545] text-white">
       <div className="flex px-4 py-28 md:py-16 md:px-16 flex-col md:flex-row md:flex-wrap gap-4 lg:gap-2">
-        <div className="flex flex-col gap-6 max-w-[400px] justify-between">
+        <div className="flex flex-col gap-6 max-w-[600px] justify-between">
           <Link href={'/'} className="text-3xl font-medium">
             <span className="text-primary">Florsit</span>
             <span className="text-white"> Shop</span>
           </Link>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua.
-          </p>
+          <div className="w-full flex flex-col gap-4 font-medium pr-12">
+            <p>Cửa hàng hoa giấy uy tín, chất lượng, giá rẻ tại Hồ Chí Minh.</p>
+            <p>
+              Chuyên cung cấp hoa giấy, hoa hồng giấy, hoa hồng sáp, hoa sáp thơm, hoa hồng sáp nhập
+              khẩu từ Hàn Quốc, Nhật Bản, Mỹ, Đài Loan, Thái Lan.
+            </p>
+            <p>
+              Chúng tôi cam kết mang đến cho khách hàng những sản phẩm hoa giấy, hoa hồng giấy, hoa
+              sáp phù hợp nhất với nhu cầu của bạn.
+            </p>
+          </div>
         </div>
         <div className="flex-auto flex lg:justify-center justify-start items-center">
           <div className="w-max flex flex-wrap gap-24 justify-between">
@@ -47,7 +54,7 @@ export const Footer: IComponent = () => {
       </div>
       <div className="w-full px-4 md:px-16 py-8 border-t border-[#E0E2E650] pb-28 md:pb-8">
         <span className="text-base text-[#4492AA]">
-          © 2023 FlowerShop.vn | All rights raserved
+          © 2023 onlineshop.studio | All rights raserved
         </span>
       </div>
     </div>
