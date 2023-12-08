@@ -29,14 +29,14 @@ export const ROUTER: TRouter[] = [
     vn: 'Blog',
   },
   {
-    name: 'About',
-    url: '/about',
-    vn: 'Giới thiệu',
-  },
-  {
     name: 'Cart',
     url: '/cart',
     vn: 'Giỏ hàng',
+  },
+  {
+    name: 'Contact',
+    url: '/contact',
+    vn: 'Liên hệ',
   },
 ];
 

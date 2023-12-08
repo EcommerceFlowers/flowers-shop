@@ -12,16 +12,18 @@ export const BannerSection: IComponent = () => {
             🌻
           </span>
           <br />
-          what the world needs
+          Khám phá thế giới hoa giấy
         </div>
 
         <div className="text-gray-600 text-xl font-normal leading-normal">
-          Our flowers will be your choices
+          {/* Our flowers will be your choices */}
+          Hoa của chúng tôi sẽ là lựa chọn hàng đầu của bạn
         </div>
         <button
           className="rounded text-lg hover:opacity-80 mt-4 whitespace-nowrap p-2 px-3 bg-primary text-white"
           onClick={() => router.push('/shop')}>
-          Shopping now
+          {/* Shopping now */}
+          Mua ngay
         </button>
       </div>
       <div className="w-1/2 flex items-center justify-center py-12">
